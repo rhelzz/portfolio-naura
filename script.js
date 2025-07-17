@@ -167,10 +167,42 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 300);
                 }
             });
+
+            // Portfolio View More/Less integration with filter
+            // Get filtered items
+            const filteredItems = [];
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                    filteredItems.push(item);
+                }
+            });
+            const viewAllBtn = document.getElementById('viewAllBtn');
+            const initialVisibleItems = 3;
+            if (filteredItems.length > initialVisibleItems) {
+                filteredItems.forEach((item, index) => {
+                    if (index < initialVisibleItems) {
+                        item.classList.remove('hide');
+                        item.style.display = 'block';
+                    } else {
+                        item.classList.add('hide');
+                        setTimeout(() => { item.style.display = 'none'; }, 400);
+                    }
+                });
+                if (viewAllBtn) {
+                    viewAllBtn.textContent = 'View More';
+                    viewAllBtn.style.display = 'inline-block';
+                    viewAllBtn.dataset.state = 'less';
+                }
+            } else {
+                if (viewAllBtn) {
+                    viewAllBtn.style.display = 'none';
+                    viewAllBtn.dataset.state = 'less';
+                }
+            }
         });
     });
 
-    // Show/hide "View All Work" button based on the number of portfolio items
+    // Show/hide "View All Work"/"View More"/"View Less" button based on the number of portfolio items
     const viewAllBtn = document.getElementById('viewAllBtn');
     const initialVisibleItems = 3;
 
@@ -179,28 +211,57 @@ document.addEventListener('DOMContentLoaded', function() {
         portfolioItems.forEach((item, index) => {
             if (index >= initialVisibleItems) {
                 item.classList.add('hide');
+                setTimeout(() => { item.style.display = 'none'; }, 400);
             }
         });
         viewAllBtn.style.display = 'inline-block';
+        viewAllBtn.textContent = 'View More';
+        viewAllBtn.dataset.state = 'less';
+    } else {
+        viewAllBtn.style.display = 'none';
+        viewAllBtn.dataset.state = 'less';
     }
 
-    // Functionality for "View All Work" button
+    // Functionality for "View More"/"View Less" button
     viewAllBtn.addEventListener('click', function(e) {
         e.preventDefault();
-
-        // If items are hidden, show all
-        if (portfolioItems[initialVisibleItems].classList.contains('hide')) {
-            portfolioItems.forEach(item => {
+        // Find which filter is active
+        let activeFilter = 'all';
+        filterButtons.forEach(btn => {
+            if (btn.classList.contains('active')) {
+                activeFilter = btn.getAttribute('data-filter');
+            }
+        });
+        // Get filtered items
+        const filteredItems = [];
+        portfolioItems.forEach(item => {
+            if (activeFilter === 'all' || item.classList.contains(activeFilter)) {
+                filteredItems.push(item);
+            }
+        });
+        if (viewAllBtn.dataset.state === 'less') {
+            // Show all filtered items
+            filteredItems.forEach(item => {
                 item.classList.remove('hide');
-                item.style.display = 'block'; // Ensure items are displayed
+                item.style.display = 'block';
                 item.style.opacity = '1';
                 item.style.transform = 'scale(1)';
             });
             viewAllBtn.textContent = 'View Less';
+            viewAllBtn.dataset.state = 'more';
         } else {
-            // If all items are visible, hide the excess
-            filterButtons[0].click(); // Trigger 'All' filter to reset visibility
-            viewAllBtn.textContent = 'View All Work';
+            // Hide items beyond initial count
+            filteredItems.forEach((item, index) => {
+                if (index < initialVisibleItems) {
+                    item.classList.remove('hide');
+                    item.style.display = 'block';
+                } else {
+                    item.classList.add('hide');
+                    setTimeout(() => { item.style.display = 'none'; }, 400);
+                }
+            });
+            viewAllBtn.textContent = 'View More';
+            viewAllBtn.dataset.state = 'less';
         }
     });
 
