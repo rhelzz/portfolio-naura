@@ -146,68 +146,56 @@
     <section id="portfolio" class="py-20 bg-cream">
         <div class="container mx-auto px-6">
             <h2 class="font-serif text-4xl mb-4 text-center" data-aos="fade-up">Portfolio</h2>
-            <p class="text-center max-w-xl mx-auto mb-16 text-gray-600" data-aos="fade-up" data-aos-delay="100">A curated selection of my professional work with leading brands and photographers.</p>
-            
+            <p class="text-center max-w-xl mx-auto mb-16 text-gray-600" data-aos="fade-up" data-aos-delay="100">
+                Kumpulan hasil karya terbaik dari berbagai bidang yang saya kerjakan.
+            </p>
+
             <!-- Portfolio Filter -->
             <div class="flex justify-center mb-10 flex-wrap gap-2" data-aos="fade-up" data-aos-delay="200">
                 <button class="portfolio-filter-btn active px-5 py-2 text-sm tracking-wider hover:text-accent transition-colors" data-filter="all">SEMUA</button>
                 <button class="portfolio-filter-btn px-5 py-2 text-sm tracking-wider hover:text-accent transition-colors" data-filter="programming">PEMROGRAMAN</button>
-                <button class="portfolio-filter-btn px-5 py-2 text-sm tracking-wider hover:text-accent transition-colors" data-filter="content-creator">KREATOR KONTEN</button>
                 <button class="portfolio-filter-btn px-5 py-2 text-sm tracking-wider hover:text-accent transition-colors" data-filter="designing">DESAIN</button>
+                <button class="portfolio-filter-btn px-5 py-2 text-sm tracking-wider hover:text-accent transition-colors" data-filter="content-creator">KREATOR KONTEN</button>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 portfolio-grid">
-                <!-- Portfolio Item 1 -->
-                <div class="portfolio-item beauty hover-effect" data-aos="fade-up" data-aos-delay="100">
-                    <img src="project-1.png" alt="Beauty Campaign" class="w-full h-auto bg-white">
+                <!-- Portfolio Item 1: Programming -->
+                <div class="portfolio-item programming hover-effect" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://placehold.co/400x250/png?text=Programming+Project" alt="Programming Project" class="w-full h-auto bg-white">
                     <div class="overlay">
                         <div class="text-white text-center px-4">
-                            <h3 class="font-serif text-xl mb-2">Summer Glow Campaign</h3>
-                            <p class="text-sm mb-3">Luxury Skincare Brand</p>
+                            <h3 class="font-serif text-xl mb-2">Aplikasi Kasir Sederhana</h3>
+                            <p class="text-sm mb-3">Project Pemrograman C++</p>
                             <a href="#" class="inline-block border border-white text-white px-4 py-2 text-sm hover:bg-white hover:text-charcoal transition-all duration-300">View Project</a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Portfolio Item 2 -->
-                <div class="portfolio-item programming hover-effect" data-aos="fade-up" data-aos-delay="200">
-                    <img src="programming.jpeg" alt="Fashion Editorial" class="w-full h-auto">
+                <!-- Portfolio Item 2: Designing -->
+                <div class="portfolio-item designing hover-effect" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://placehold.co/400x250/png?text=UI+Design" alt="UI Design" class="w-full h-auto">
                     <div class="overlay">
                         <div class="text-white text-center px-4">
-                            <h3 class="font-serif text-xl mb-2">Program Kasir Sederhana</h3>
-                            <p class="text-sm mb-3">Studi Kasus C++</p>
+                            <h3 class="font-serif text-xl mb-2">Desain UI/UX Mobile App</h3>
+                            <p class="text-sm mb-3">Figma Mockup</p>
                             <a href="#" class="inline-block border border-white text-white px-4 py-2 text-sm hover:bg-white hover:text-charcoal transition-all duration-300">View Project</a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Portfolio Item 3 -->
+                <!-- Portfolio Item 3: Content Creator -->
                 <div class="portfolio-item content-creator hover-effect" data-aos="fade-up" data-aos-delay="300">
-                    <img src="contentcreator.png" alt="Cosmetic Advertisement" class="w-full h-auto">
+                    <img src="https://placehold.co/400x250/png?text=Content+Creation" alt="Content Creator Project" class="w-full h-auto">
                     <div class="overlay">
                         <div class="text-white text-center px-4">
-                            <h3 class="font-serif text-xl mb-2">Pemasaran Produk</h3>
-                            <p class="text-sm mb-3">PKWU Content Creator</p>
-                            <a href="#" class="inline-block border border-white text-white px-4 py-2 text-sm hover:bg-white hover:text-charcoal transition-all duration-300">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Portfolio Item 4 -->
-                <div class="portfolio-item designing hover-effect" data-aos="fade-up" data-aos-delay="100">
-                    <img src="desain.jpeg" alt="Skincare Campaign" class="w-full h-auto">
-                    <div class="overlay">
-                        <div class="text-white text-center px-4">
-                            <h3 class="font-serif text-xl mb-2">UI/UX Aplikasi Mobile</h3>
-                            <p class="text-sm mb-3">Desain Figma</p>
+                            <h3 class="font-serif text-xl mb-2">Video Promosi Produk</h3>
+                            <p class="text-sm mb-3">Kreator Konten PKWU</p>
                             <a href="#" class="inline-block border border-white text-white px-4 py-2 text-sm hover:bg-white hover:text-charcoal transition-all duration-300">View Project</a>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center mt-12" data-aos="fade-up">
-                <a href="#" class="px-8 py-3 border border-charcoal text-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300 tracking-wider text-sm inline-block relative group overflow-hidden">
+                <a href="#" id="viewAllBtn" class="view-all-btn px-8 py-3 border border-charcoal text-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300 tracking-wider text-sm inline-block relative group">
                     <span class="relative z-10 group-hover:text-cream transition-colors">VIEW ALL WORK</span>
                     <span class="absolute inset-0 bg-charcoal transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
                 </a>

@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-    // ... (kode filter yang sudah ada)
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Remove active class from all buttons
@@ -169,6 +168,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+    });
+
+    // Show/hide "View All Work" button based on the number of portfolio items
+    const viewAllBtn = document.getElementById('viewAllBtn');
+    const initialVisibleItems = 3;
+
+    // Initially hide items beyond the initial visible count
+    if (portfolioItems.length > initialVisibleItems) {
+        portfolioItems.forEach((item, index) => {
+            if (index >= initialVisibleItems) {
+                item.classList.add('hide');
+            }
+        });
+        viewAllBtn.style.display = 'inline-block';
+    }
+
+    // Functionality for "View All Work" button
+    viewAllBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // If items are hidden, show all
+        if (portfolioItems[initialVisibleItems].classList.contains('hide')) {
+            portfolioItems.forEach(item => {
+                item.classList.remove('hide');
+                item.style.display = 'block'; // Ensure items are displayed
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            });
+            viewAllBtn.textContent = 'View Less';
+        } else {
+            // If all items are visible, hide the excess
+            filterButtons[0].click(); // Trigger 'All' filter to reset visibility
+            viewAllBtn.textContent = 'View All Work';
+        }
     });
 
     // Initialize Swiper for testimonials
